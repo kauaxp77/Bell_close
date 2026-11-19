@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Proposta Comercial - Bell Close</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    @page {
+      size: A4;
+      margin: 20mm 18mm 20mm 18mm;
+    }
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: #1A1A1A;
+      background: #FFFFFF;
+      font-size: 10pt;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+    .header-table {
+      width: 100%;
+      border-bottom: 2px solid #111111;
+      padding-bottom: 14px;
+      margin-bottom: 24px;
+    }
+    .header-logo {
+      height: 44px;
+      width: auto;
+      object-fit: contain;
+    }
+    .header-meta {
+      text-align: right;
+      font-size: 8.5pt;
+      color: #555555;
+    }
+    .header-meta strong {
+      color: #111111;
+      font-size: 9.5pt;
+    }
+    h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 19pt;
+      color: #111111;
+      margin-bottom: 6px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+    .doc-subtitle {
+      font-size: 9.5pt;
+      color: #666664;
+      margin-bottom: 22px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #EAE7E1;
+    }
+    h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 13pt;
+      color: #111111;
+      margin: 18px 0 8px 0;
+      font-weight: 600;
+      border-left: 3px solid #111111;
+      padding-left: 8px;
+    }
+    h3 {
+      font-size: 10pt;
+      font-weight: 700;
+      color: #222222;
+      margin: 10px 0 4px 0;
+    }
+    p {
+      margin-bottom: 8px;
+      color: #333333;
+    }
+    ul {
+      margin-left: 18px;
+      margin-bottom: 10px;
+      color: #333333;
+    }
+    li {
+      margin-bottom: 4px;
+    }
+    .card-box {
+      background: #FAF9F5;
+      border: 1px solid #E8E5DE;
+      border-radius: 6px;
+      padding: 12px 14px;
+      margin-bottom: 12px;
+      page-break-inside: avoid;
+    }
+    .card-box.dark {
+      background: #111111;
+      color: #FFFFFF;
+      border-color: #111111;
+    }
+    .card-box.dark p, .card-box.dark span, .card-box.dark strong {
+      color: #FAF9F5;
+    }
+    table.data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px 0 16px 0;
+      font-size: 9pt;
+      page-break-inside: avoid;
+    }
+    table.data-table th, table.data-table td {
+      padding: 8px 10px;
+      border: 1px solid #E8E5DE;
+      text-align: left;
+    }
+    table.data-table th {
+      background: #F3F1EC;
+      color: #111111;
+      font-weight: 600;
+    }
+    .price-tag {
+      font-size: 14pt;
+      font-weight: 700;
+      color: #111111;
+    }
+    .grid-2 {
+      display: flex;
+      gap: 14px;
+      margin-bottom: 12px;
+      page-break-inside: avoid;
+    }
+    .col-half {
+      flex: 1;
+      background: #FAF9F5;
+      border: 1px solid #E8E5DE;
+      border-radius: 6px;
+      padding: 12px;
+    }
+    .col-half h4 {
+      font-size: 9.5pt;
+      font-weight: 700;
+      color: #111111;
+      margin-bottom: 6px;
+    }
+    .highlight-badge {
+      display: inline-block;
+      background: #111111;
+      color: #FFFFFF;
+      font-size: 7.5pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 2px 6px;
+      border-radius: 3px;
+      margin-bottom: 6px;
+    }
+    .page-break {
+      page-break-before: always;
+    }
+    .signature-area {
+      margin-top: 28px;
+      display: flex;
+      justify-content: space-between;
+      page-break-inside: avoid;
+    }
+    .sign-block {
+      width: 45%;
+      border-top: 1px solid #111111;
+      padding-top: 8px;
+      text-align: center;
+      font-size: 8.5pt;
+      color: #444444;
+    }
+    .footer-note {
+      text-align: center;
+      font-size: 7.5pt;
+      color: #888888;
+      margin-top: 30px;
+      border-top: 1px solid #EAE7E1;
+      padding-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Cabeçalho -->
+  <table class="header-table">
+    <tr>
+      <td style="vertical-align: middle;">
+        <img src="images/logo.png" alt="Bell Close" class="header-logo" onerror="this.style.display='none'; document.getElementById('logo-text').style.display='block';">
+        <span id="logo-text" style="display:none; font-family:'Playfair Display',serif; font-size:16pt; font-weight:700;">BELL CLOSE</span>
+      </td>
+      <td class="header-meta" style="vertical-align: middle;">
+        <strong>PROPOSTA COMERCIAL #2026-BC01</strong><br>
+        Cliente: <strong>Bell Close (@usebell.close)</strong><br>
+        Localidade: Águas Lindas de Goiás • Novembro / 2026
+      </td>
+    </tr>
+  </table>
+
+  <h1>Desenvolvimento de Loja Online & Catálogo WhatsApp</h1>
+  <div class="doc-subtitle">
+    Proposta sob medida para modernização de vendas, catálogo de moda elegante e fechamento automático de pedidos.
+  </div>
+
+  <h2>1. Diagnóstico & Objetivo Estratégico</h2>
+  <p>
+    A Bell Close atende com elegância clientes de Águas Lindas de Goiás através do Instagram e WhatsApp. No entanto, o atendimento manual por Direct consome horas tirando dúvidas repetitivas de numeração, preços e bairro de entrega, além de limitar o volume de pedidos simultâneos.
+  </p>
+  <div class="card-box">
+    <strong>Objetivo do Projeto:</strong> Entregar uma vitrine online exclusiva com carregamento ultrarrápido em celulares, onde a cliente visualiza as peças em alta definição, escolhe seu tamanho, informa o bairro de entrega e envia o pedido formatado com 1 clique direto para o WhatsApp da loja, <strong>com zero taxa sobre as vendas</strong>.
+  </div>
+
+  <h2>2. Escopo dos Serviços</h2>
+  <ul>
+    <li><strong>Design Editorial & Identidade Visual:</strong> Paleta neutra (off-white, preto e cinza quente), tipografia serifada de luxo e logotipo oficial integrado.</li>
+    <li><strong>Vitrine Responsiva Mobile-First:</strong> Otimizada para celulares, com filtros por categoria (Vestidos, Alfaiataria, Camisas, Calças, Tops e Conjuntos).</li>
+    <li><strong>Sacola Lateral Inteligente:</strong> Permite acumular várias peças, calcular subtotal, selecionar o bairro de Águas Lindas e a forma de pagamento (Pix, Cartão ou Dinheiro).</li>
+    <li><strong>Botão de Pedido Rápido:</strong> Compra direta de 1 clique no WhatsApp em cada peça para clientes com pressa.</li>
+    <li><strong>Prova Social e FAQ:</strong> Seção de depoimentos de clientes locais e perguntas frequentes para aumentar a confiança e conversão.</li>
+    <li><strong>Hospedagem em Nuvem de Alta Velocidade (Vercel):</strong> Certificado SSL incluso (cadeado verde de segurança) sem custo de servidor.</li>
+  </ul>
+
+  <h2>3. Investimento de Implantação</h2>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Pacote</th>
+        <th>O que está incluso</th>
+        <th>Valor</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Implantação Completa</strong></td>
+        <td>
+          Desenvolvimento do site responsivo + Sacola inteligente + Integração WhatsApp + Inserção inicial de até 20 peças do catálogo oficial + 30 dias de garantia e suporte gratuito.
+        </td>
+        <td>
+          <span class="price-tag">R$ 850,00</span> (à vista via Pix)<br>
+          <span style="font-size: 8pt; color: #666;">ou R$ 950,00 (50% de entrada + 50% na entrega)</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Quebra para a Página 2 -->
+  <div class="page-break"></div>
+
+  <h2>4. Custos de Manutenção & Atualização de Estoque</h2>
+  <p>
+    Após os 30 dias de garantia inicial, oferecemos total flexibilidade para a Bell Close atualizar peças esgotadas, novos preços e novas coleções, sem obrigações abusivas:
+  </p>
+
+  <div class="grid-2">
+    <div class="col-half">
+      <span class="highlight-badge">Mais Flexível</span>
+      <h4>Opção 1: Manutenção Avulsa (Por Demanda)</h4>
+      <p style="font-size: 8.5pt; color: #555;">Ideal para trocas pontuais de coleção.</p>
+      <div style="font-size: 13pt; font-weight: 700; color: #111; margin: 8px 0;">R$ 90,00 <span style="font-size: 8pt; font-weight: 400;">/ lote</span></div>
+      <ul style="font-size: 8.5pt; margin-left: 14px;">
+        <li>Atualização de até 10 produtos (fotos, valores e tamanhos).</li>
+        <li>Marcação ou remoção de peças esgotadas.</li>
+        <li>Sem custo fixo mensal: só paga quando solicitar.</li>
+      </ul>
+    </div>
+
+    <div class="col-half" style="border: 1.5px solid #111111;">
+      <span class="highlight-badge" style="background:#C5A880; color:#111;">Recomendado</span>
+      <h4>Opção 2: Plano Mensal de Gestão de Estoque</h4>
+      <p style="font-size: 8.5pt; color: #555;">Para manter o catálogo sincronizado toda semana.</p>
+      <div style="font-size: 13pt; font-weight: 700; color: #111; margin: 8px 0;">R$ 150,00 <span style="font-size: 8pt; font-weight: 400;">/ mês</span></div>
+      <ul style="font-size: 8.5pt; margin-left: 14px;">
+        <li>Até 4 lotes de atualização por mês (1 por semana).</li>
+        <li>Remoção imediata de peças esgotadas para evitar cancelamentos.</li>
+        <li>Suporte prioritário via WhatsApp direto com o desenvolvedor.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>5. Diferencial Econômico vs. Plataformas Tradicionais</h2>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>E-commerce Comum (Shopify / Nuvemshop)</th>
+        <th>Solução Bell Close (Nossa Proposta)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Mensalidade de Plataforma</strong></td>
+        <td>R$ 60 a R$ 190 / mês (obrigatório)</td>
+        <td><strong>R$ 0,00 / mês</strong> (zero custo fixo)</td>
+      </tr>
+      <tr>
+        <td><strong>Taxa sobre Vendas</strong></td>
+        <td>1,5% a 3% por transação</td>
+        <td><strong>0% de comissão</strong> (venda 100% sua)</td>
+      </tr>
+      <tr>
+        <td><strong>Fechamento do Pedido</strong></td>
+        <td>Checkout impessoal (alto abandono)</td>
+        <td><strong>Direto no WhatsApp oficial da loja</strong></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>6. Cronograma & Próximos Passos</h2>
+  <p><strong>Prazo de Entrega:</strong> 4 dias úteis a partir do envio das fotos e tabela de preços oficiais das peças.</p>
+  <ol style="margin-left: 18px; font-size: 9pt; color: #333; margin-bottom: 24px;">
+    <li>Aprovação desta proposta formal.</li>
+    <li>Pagamento da entrada (50%) ou valor à vista.</li>
+    <li>Envio das fotos oficiais das peças da Bell Close.</li>
+    <li>Publicação oficial no ar e início das vendas com o novo link.</li>
+  </ol>
+
+  <div class="signature-area">
+    <div class="sign-block">
+      <strong>DESENVOLVEDOR RESPONSÁVEL</strong><br>
+      Desenvolvimento Web & Soluções Digitais
+    </div>
+    <div class="sign-block">
+      <strong>BELL CLOSE (@usebell.close)</strong><br>
+      Aceite da Proposta Comercial
+    </div>
+  </div>
+
+  <div class="footer-note">
+    Documento confidencial gerado exclusivamente para Bell Close • Validade: 10 dias corridos.
+  </div>
+
+</body>
+</html>
