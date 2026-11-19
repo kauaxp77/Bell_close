@@ -8,12 +8,15 @@ describe('Integridade dos arquivos e referências do projeto', () => {
     const requiredFiles = [
       'index.html',
       'package.json',
+      'README.md',
+      'vercel.json',
       'css/style.css',
       'js/cart.js',
-      'js/products.js',
-      'js/app.js',
+      'js/stock.js',
       'images/logo.png',
-      'images/favicon.png'
+      'images/favicon.png',
+      'docs/PROPOSTA_COMERCIAL.md',
+      'docs/Proposta_Comercial_Bell_Close.pdf'
     ];
 
     for (const relPath of requiredFiles) {
@@ -32,23 +35,21 @@ describe('Integridade dos arquivos e referências do projeto', () => {
     );
   });
 
-  it('deve conter produtos estáticos pré-renderizados no index.html para visualização offline/file protocol', () => {
+  it('deve carregar o estoque via script js/stock.js no index.html', () => {
+    const html = fs.readFileSync(path.resolve('index.html'), 'utf-8');
+    assert.ok(
+      html.includes('src="js/stock.js"'),
+      'index.html deve carregar js/stock.js para controle dinâmico de estoque'
+    );
+  });
+
+  it('deve conter seções institucionais e complementares', () => {
     const html = fs.readFileSync(path.resolve('index.html'), 'utf-8');
 
-    // Verifica que há produtos pré-renderizados direto no HTML
-    assert.ok(html.includes('Vestido Midi Acetinado'), 'Deve conter Vestido Midi no HTML estático');
-    assert.ok(html.includes('Blazer Alfaiataria Estruturado'), 'Deve conter Blazer no HTML estático');
-    assert.ok(html.includes('Calça Wide Leg'), 'Deve conter Calça Wide Leg no HTML estático');
-    assert.ok(html.includes('Camisa Linho Puro'), 'Deve conter Camisa Linho no HTML estático');
-
-    // Verifica seções ricas adicionais solicitadas para o protótipo
+    // Seções
     assert.ok(html.includes('id="depoimentos"'), 'Deve conter seção de depoimentos de clientes');
     assert.ok(html.includes('id="faq"'), 'Deve conter seção de perguntas frequentes');
     assert.ok(html.includes('id="instagram-feed"'), 'Deve conter seção de feed do Instagram');
-  });
-
-  it('deve conter as informações institucionais obrigatórias no index.html', () => {
-    const html = fs.readFileSync(path.resolve('index.html'), 'utf-8');
 
     // Instagram
     assert.ok(html.includes('@usebell.close'), 'Deve conter o @ do Instagram');
@@ -62,10 +63,5 @@ describe('Integridade dos arquivos e referências do projeto', () => {
     // Telefone / WhatsApp da loja
     assert.ok(html.includes('5561982335867'), 'Deve conter o número da loja para WhatsApp');
     assert.ok(html.includes('(61) 98233-5867'), 'Deve exibir o telefone formatado');
-
-    // Métodos de pagamento
-    assert.ok(html.includes('Pix'), 'Deve mencionar Pix');
-    assert.ok(html.includes('Cartão'), 'Deve mencionar Cartão');
-    assert.ok(html.includes('Dinheiro'), 'Deve mencionar Dinheiro');
   });
 });

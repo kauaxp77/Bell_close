@@ -6,68 +6,105 @@ Operação 100% online com entregas exclusivas para **Águas Lindas de Goiás**.
 
 ---
 
-## 🌸 Características da Loja
+## 📁 Estrutura do Repositório
 
-- **Identidade Visual:** Paleta neutra (fundo claro/off-white `#FAF9F5`, preto `#111111`, toques terrosos sutis).
-- **Estilo:** Cortes sofisticados, peças delicadas, alfaiataria contemporânea e tecidos confortáveis.
-- **Atendimento Local:** Segunda a Sábado, das 09h às 20h.
-- **Área de Cobertura:** Entregas rápidas em todos os bairros de Águas Lindas de Goiás (Jardim Brasília, Mansões Olinda, Pérola, Santa Lúcia, Barragem, Setores 01 ao 08, etc.).
-- **Formas de Pagamento:** Pix, Cartão de Crédito/Débito (na entrega) e Dinheiro.
-- **Canais Oficiais:**
-  - WhatsApp: `(61) 98233-5867` ([wa.me/5561982335867](https://wa.me/5561982335867))
-  - Instagram: `[@usebell.close](https://www.instagram.com/usebell.close)`
-
----
-
-## 🛍️ Funcionalidades da Página
-
-1. **Vitrine Responsiva com Filtros:**
-   - Categorias: Vestidos, Alfaiataria, Camisas, Calças, Tops e Conjuntos.
-   - Seleção interativa de tamanhos (`P`, `M`, `G`, `GG`).
-   - Opção de pedido rápido com 1 clique diretamente no WhatsApp.
-2. **Sacola de Compras Integrada (Drawer):**
-   - Adição e remoção de múltiplas peças com quantidades e tamanhos independentes.
-   - Cálculo automático do subtotal dos produtos.
-   - Seleção do bairro de entrega em Águas Lindas e forma de pagamento.
-   - Geração de mensagem estruturada e codificada que abre diretamente no WhatsApp da loja com todos os dados do pedido prontos para envio.
-3. **Seções de Apoio:**
-   - Banner editorial "Cápsula Monocromática".
-   - Passo a passo de compra e entrega local.
-   - Prova social com depoimentos de clientes da região.
-   - FAQ de dúvidas frequentes.
-   - Galeria simulando o feed do Instagram.
+```text
+├── index.html          # Página principal da loja (vitrine + sacola + WhatsApp)
+├── vercel.json         # Configuração de publicação estática na Vercel
+├── package.json        # Configuração de scripts e testes automatizados
+├── README.md           # Guia do projeto e manutenção de estoque
+├── css/
+│   └── style.css       # Estilos visuais, variáveis de cor e responsividade
+├── js/
+│   ├── stock.js        # 📦 FONTE ÚNICA DO ESTOQUE (altere aqui para gerenciar peças)
+│   └── cart.js         # Módulo de cálculo de sacola e formatação de pedido
+├── images/
+│   ├── logo.png        # Logotipo oficial da Bell Close
+│   └── favicon.png     # Ícone do navegador (aba)
+├── docs/               # 📄 Materiais comerciais e propostas
+│   ├── PROPOSTA_COMERCIAL.md           # Proposta detalhada em Markdown
+│   ├── Proposta_Comercial_Bell_Close.pdf # PDF executivo pronto para envio
+│   ├── proposta_documento.html         # Template de impressão da proposta
+│   └── Bell_Close_logo.pdf             # Material original de identidade
+└── tests/              # 🧪 Suíte de testes automatizados
+    ├── cart.test.js
+    ├── stock.test.js
+    └── integrity.test.js
+```
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+## 📦 Como Dar Manutenção no Estoque (`js/stock.js`)
 
-- **HTML5** semântico com pré-renderização estática (compatível com protocolo `file://` offline).
-- **CSS3** moderno com variáveis customizadas, tipografia web (`Playfair Display` e `Plus Jakarta Sans`) e design responsivo (Mobile-First).
-- **JavaScript** modular para regras de negócio e script universal para compatibilidade ampla.
-- **Node.js Test Runner** (`node --test`) para suíte de testes unitários automatizados.
+Toda a gestão de produtos é feita **exclusivamente** dentro do arquivo [`js/stock.js`](js/stock.js). Você não precisa encostar em nenhuma linha de HTML ou CSS.
+
+### 1. Marcar uma peça como ESGOTADA
+Basta alterar `inStock: true` para `inStock: false`:
+
+```javascript
+{
+  id: 'prod-1',
+  name: 'Vestido Midi Acetinado Off-White',
+  category: 'Vestidos',
+  price: 189.90,
+  sizes: ['P', 'M', 'G'],
+  inStock: false, // <-- Exibe "Esgotado" e desativa a compra automaticamente
+  ...
+}
+```
+
+### 2. Alterar o PREÇO de uma peça
+Edite o campo `price` com o novo valor numérico:
+
+```javascript
+price: 179.90, // Altera automaticamente o card, a sacola e a mensagem do WhatsApp
+```
+
+### 3. Alterar os TAMANHOS disponíveis
+Edite o array `sizes`:
+
+```javascript
+sizes: ['P', 'M', 'G', 'GG'],
+```
+
+### 4. Adicionar uma NOVA PEÇA
+Copie um bloco existente dentro de `BELL_CATALOG`, cole no final da lista com um novo `id` e preencha as informações:
+
+```javascript
+{
+  id: 'prod-9',
+  name: 'Saia Midi Linho Cru',
+  category: 'Vestidos',
+  price: 169.90,
+  sizes: ['P', 'M', 'G'],
+  inStock: true,
+  tag: 'Lançamento',
+  description: 'Cintura alta com caimento leve e tecido fresco.',
+  image: 'https://images.unsplash.com/...'
+}
+```
+
+Após editar, basta subir as alterações para o GitHub:
+
+```bash
+git add js/stock.js
+git commit -m "chore: atualiza estoque e precos"
+git push
+```
+A Vercel atualizará o site da cliente automaticamente em menos de 20 segundos!
 
 ---
 
 ## 🧪 Como Rodar os Testes
 
-Para executar a suíte de testes automatizados:
+Para validar a integridade do estoque e dos cálculos antes de subir:
 
 ```bash
 npm test
 ```
 
 A suíte valida:
-- Adição, remoção e atualização de itens na sacola.
-- Cálculo de subtotal e total.
-- Formatação exata da mensagem enviada para o WhatsApp.
-- Integridade estrutural de arquivos e requisitos institucionais da loja.
-
----
-
-## 🚀 Publicação na Vercel
-
-O projeto está configurado para publicação estática com suporte a URLs limpas (`vercel.json`).
-
-1. Conecte este repositório à sua conta na [Vercel](https://vercel.com).
-2. O framework detectado será automaticamente **Other** (Static Site).
-3. Clique em **Deploy**.
+- IDs únicos e ausência de duplicatas em `js/stock.js`.
+- Preços válidos e tamanhos cadastrados.
+- Cálculos da sacola e formatação do link do WhatsApp.
+- Integridade estrutural de arquivos essenciais.
