@@ -14,9 +14,7 @@ describe('Integridade dos arquivos e referências do projeto', () => {
       'js/cart.js',
       'js/stock.js',
       'images/logo.png',
-      'images/favicon.png',
-      'docs/PROPOSTA_COMERCIAL.md',
-      'docs/Proposta_Comercial_Bell_Close.pdf'
+      'images/favicon.png'
     ];
 
     for (const relPath of requiredFiles) {

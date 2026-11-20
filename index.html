@@ -590,7 +590,7 @@
 
           html += '<article class="product-card" data-category="' + p.category + '" style="' + (inStock ? '' : 'opacity:0.85;') + '">' +
             '<div class="product-image-container">' +
-              '<img src="' + p.image + '" alt="' + p.name + '" loading="lazy" />' +
+              '<img src="' + p.image + '" alt="' + p.name + '" loading="lazy" onerror="this.onerror=null;this.src=\'images/sem-foto.svg\'" />' +
               tagHtml +
             '</div>' +
             '<div class="product-body">' +
@@ -639,7 +639,7 @@
             var item = cart.items[i];
             html += '<div class="cart-item-row" data-id="' + item.id + '" data-size="' + item.size + '">';
             if (item.image) {
-              html += '<img src="' + item.image + '" alt="' + item.name + '" class="cart-item-thumb" />';
+              html += '<img src="' + item.image + '" alt="' + item.name + '" class="cart-item-thumb" onerror="this.onerror=null;this.src=\'images/sem-foto.svg\'" />';
             }
             html += '<div class="cart-item-details">';
             html += '<h5 class="cart-item-title">' + item.name + '</h5>';
