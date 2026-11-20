@@ -13,7 +13,7 @@
  * ============================================================================
  */
 
-export const BELL_CATALOG = [
+const BELL_CATALOG = [
   {
     id: 'prod-1',
     name: 'Vestido Midi Acetinado Off-White',
@@ -104,7 +104,9 @@ export const BELL_CATALOG = [
   }
 ];
 
-// Compatibilidade para execução no navegador sem erro de import/CORS
+// Script comum (sem "export"): o index.html carrega este arquivo com
+// <script src="js/stock.js">, e "export" faria o navegador rejeitar o arquivo
+// inteiro, deixando a vitrine vazia. Os testes leem o catálogo daqui também.
 if (typeof window !== 'undefined') {
   window.BELL_CATALOG = BELL_CATALOG;
 }

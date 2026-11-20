@@ -1,6 +1,14 @@
 import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
-import { BELL_CATALOG } from '../js/stock.js';
+import fs from 'node:fs';
+import path from 'node:path';
+import vm from 'node:vm';
+
+// Carrega js/stock.js do mesmo jeito que o navegador (script comum, não módulo).
+// Se alguém colocar "export" no arquivo, este carregamento falha como no site.
+const janela = {};
+vm.runInNewContext(fs.readFileSync(path.resolve('js/stock.js'), 'utf-8'), { window: janela });
+const BELL_CATALOG = janela.BELL_CATALOG;
 
 describe('Catálogo & Controle de Estoque (js/stock.js)', () => {
   it('deve possuir produtos cadastrados no catálogo', () => {
