@@ -972,7 +972,7 @@ a {
 
 .testimonials-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
   gap: 28px;
 }
 
@@ -1208,6 +1208,29 @@ a {
 @media (max-width: 768px) {
   .header-inner {
     height: 70px;
+    gap: 12px;
+  }
+
+  /* O logo não pode encolher: quem cede espaço são os botões do cabeçalho */
+  .brand-logo-wrap {
+    flex-shrink: 0;
+  }
+
+  .brand-logo-img {
+    height: 40px;
+  }
+
+  .header-actions {
+    gap: 8px;
+  }
+
+  /* Instagram só com o ícone no celular */
+  .btn-icon-link span {
+    display: none;
+  }
+
+  .btn-icon-link {
+    padding: 9px;
   }
   
   .nav-links {
@@ -1245,5 +1268,20 @@ a {
   .footer-grid {
     grid-template-columns: 1fr;
     gap: 32px;
+  }
+}
+
+/* Celulares pequenos (até 380px): a sacola fica só com o ícone e o contador */
+@media (max-width: 380px) {
+  .btn-cart > span:not(.cart-count-badge) {
+    display: none;
+  }
+
+  .btn-cart {
+    padding: 9px 14px;
+  }
+
+  .testimonial-card {
+    padding: 24px;
   }
 }
